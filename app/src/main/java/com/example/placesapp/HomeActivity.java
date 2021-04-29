@@ -131,7 +131,7 @@ public class HomeActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void continueBtn(Place place) {
+    public void continueBtn() {
         btnContinue.setVisibility(View.VISIBLE);
     }
 

@@ -87,7 +87,8 @@ public class NewPlaceFragment extends Fragment {
         btnReg.setOnClickListener( e -> {
             home.getPlace().setName(txtPlaceName.toString());
             home.getPlaces().add(home.getPlace());
-            Log.e(">>>>>>>>>", home.getPlaces().get(0)+"");
+            Log.e(">>>>>>>>>", "Latitud: "+home.getPlaces().get(0).getLatLng().latitude);
+            Log.e(">>>>>>>>>", "Longitud: "+home.getPlaces().get(0).getLatLng().latitude);
 
             txtPlaceName.setText("");
             imgPlace.setVisibility(View.INVISIBLE);

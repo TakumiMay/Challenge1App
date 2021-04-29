@@ -47,9 +47,6 @@ public class MapsFragment extends Fragment implements LocationListener, OnMapRea
 
     private LocationManager locationManager;
 
-    //private Marker myMarker;
-    private ArrayList<Place> markers;
-
     private int modality;
 
     private String zoomPlace;
@@ -60,14 +57,15 @@ public class MapsFragment extends Fragment implements LocationListener, OnMapRea
 
     public MapsFragment( NewPlaceFragment newPlace, HomeActivity home){
         this.home=home;
-        markers = home.getPlaces();
         this.newPlace=newPlace;
         newPlace.setObserver2(this);
     }
 
     public void paintMarkers(){
-        for(Place k : markers){
-            mMap.addMarker(new MarkerOptions().position(k.getLatLng()).title(k.getName()));
+        if (home.getPlaces().size()>0){
+            for(Place k : home.getPlaces()){
+                mMap.addMarker(new MarkerOptions().position(k.getLatLng()).title(k.getName()));
+            }
         }
     }
 
@@ -83,11 +81,12 @@ public class MapsFragment extends Fragment implements LocationListener, OnMapRea
                 if(modality==VIEW_MOD){
                     Log.e(">>>>>>", "Modalidad de visualización prro");
                 }else{
+                    mMap.clear();
                     Log.e(">>>>>>", "Modalidad de adición prro");
                     LatLng pos = new LatLng(e.latitude, e.longitude);
                     mMap.addMarker(new MarkerOptions().position(pos));
-                    Place marker = new Place("", pos);
-                    observer.continueBtn(marker);
+                    home.getPlace().setLatLng(pos);
+                    observer.continueBtn();
                 }
             });
         }
@@ -146,9 +145,9 @@ public class MapsFragment extends Fragment implements LocationListener, OnMapRea
     public void isNear(Location location){
         boolean found = false;
         Location temp = new Location(LocationManager.GPS_PROVIDER);
-        for(int i=0;i<markers.size() && found==false;i++){
-            temp.setLongitude(markers.get(i).getLatLng().longitude);
-            temp.setLatitude(markers.get(i).getLatLng().latitude);
+        for(int i=0;i<home.getPlaces().size() && found==false;i++){
+            temp.setLongitude(home.getPlaces().get(i).getLatLng().longitude);
+            temp.setLatitude(home.getPlaces().get(i).getLatLng().latitude);
             if(location.distanceTo(temp)<100){
 
             }
@@ -158,9 +157,9 @@ public class MapsFragment extends Fragment implements LocationListener, OnMapRea
     public Place searchMarker(String name){
         Place myMarker = null;
         boolean found = false;
-        for(int i=0;i<markers.size() && found == false ;i++){
-            if(markers.get(i).getName().toString().equalsIgnoreCase(name)){
-                myMarker = markers.get(i);
+        for(int i=0;i<home.getPlaces().size() && found == false ;i++){
+            if(home.getPlaces().get(i).getName().toString().equalsIgnoreCase(name)){
+                myMarker = home.getPlaces().get(i);
                 found = true;
             }
         }
@@ -190,12 +189,8 @@ public class MapsFragment extends Fragment implements LocationListener, OnMapRea
         }
     }
 
-    public void savePlaces(Place place){
-        markers.add(place);
-    }
-
     public interface PassingInfo {
-        void continueBtn(Place place);
+        void continueBtn();
     }
 
 }
