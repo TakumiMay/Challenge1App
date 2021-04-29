@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="#302D2D"
+            android:paddingLeft="20dp"
+            android:shadowColor="#E5E5E5"
+            android:text="Places"
+            android:textColor="#FFFFFF"
+            android:textSize="36sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/addPlaceBanner"
+            android:layout_width="302dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Agregar un sitio"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="26sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <TextView
+            android:id="@+id/addPlaceDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="43dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="45dp"
+            android:width="323dp"
+            android:ellipsize="middle"
+            android:ems="10"
+            android:inputType="textMultiLine"
+            android:text="En esta seccion puede inscribir un sitio de la ciudad. Nombre el lugar y luego con el boton de mapa, seleccione un punto en el mapa"
+            android:textAlignment="textStart"
+            android:textColor="#FFFFFF"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addPlaceBanner" />
+
+        <TextView
+            android:id="@+id/editTextTextPersonName3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="43dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="45dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Datos"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addPlaceDesc" />
+
+        <TextView
+            android:id="@+id/editTextTextPersonName5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="43dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="45dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Imagenes"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnAddPosition" />
+
+        <EditText
+            android:id="@+id/txtPlaceName"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_marginStart="43dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="45dp"
+            android:background="@drawable/white_back_border"
+            android:ems="10"
+            android:hint="Nombre"
+            android:inputType="textPersonName"
+            android:paddingLeft="15dp"
+            android:scrollHorizontally="true"
+            android:shadowColor="#D0D0D0"
+            android:textColor="#D0D0D0"
+            android:textColorHint="#D0D0D0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+
+        <ImageButton
+            android:id="@+id/btnAddImg"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="296dp"
+            android:background="@drawable/transparent_back"
+            android:src="@drawable/round_add_box_white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName5" />
+
+        <Button
+            android:id="@+id/btnReg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/round_border_button"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="R E G I S T R A R"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnAddImg" />
+
+        <ImageButton
+            android:id="@+id/btnAddPosition"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/transparent_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtPlaceName"
+            app:srcCompat="@drawable/round_room_white_24dp" />
+
+        <TextView
+            android:id="@+id/txtAddress"
+            android:layout_width="257dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="45dp"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btnAddPosition"
+            app:layout_constraintTop_toBottomOf="@+id/txtPlaceName" />
+
+        <ImageView
+            android:id="@+id/imgPlace"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="200dp"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btnAddImg"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName5"
+            tools:srcCompat="@tools:sample/avatars" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
