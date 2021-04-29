@@ -52,6 +52,8 @@ public class HomeActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        place = new Place();
+
         places = new ArrayList<>();
 
         setContentView(R.layout.activity_home);
@@ -95,6 +97,7 @@ public class HomeActivity extends AppCompatActivity implements
                 case R.id.map:
                     showFragment(map);
                     map.setModality(0);
+                    map.paintMarkers();
                     btnContinue.setVisibility(View.INVISIBLE);
                     break;
                 case R.id.find:
@@ -130,7 +133,6 @@ public class HomeActivity extends AppCompatActivity implements
     @Override
     public void continueBtn(Place place) {
         btnContinue.setVisibility(View.VISIBLE);
-        newPlace.setPlace(place);
     }
 
     public ArrayList<Place> getPlaces() {
@@ -139,5 +141,9 @@ public class HomeActivity extends AppCompatActivity implements
 
     public void setPlaces(ArrayList<Place> places) {
         this.places = places;
+    }
+
+    public Place getPlace() {
+        return place;
     }
 }

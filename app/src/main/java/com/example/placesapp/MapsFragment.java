@@ -45,8 +45,6 @@ public class MapsFragment extends Fragment implements LocationListener, OnMapRea
 
     private GoogleMap mMap;
 
-    private String placeName;
-
     private LocationManager locationManager;
 
     //private Marker myMarker;
@@ -67,6 +65,12 @@ public class MapsFragment extends Fragment implements LocationListener, OnMapRea
         newPlace.setObserver2(this);
     }
 
+    public void paintMarkers(){
+        for(Place k : markers){
+            mMap.addMarker(new MarkerOptions().position(k.getLatLng()).title(k.getName()));
+        }
+    }
+
     private OnMapReadyCallback callback = new OnMapReadyCallback() {
         @Override
         public void onMapReady(GoogleMap googleMap) {
@@ -78,16 +82,11 @@ public class MapsFragment extends Fragment implements LocationListener, OnMapRea
             mMap.setOnMapLongClickListener( e -> {
                 if(modality==VIEW_MOD){
                     Log.e(">>>>>>", "Modalidad de visualización prro");
-                    for(Place k : markers){
-                        mMap.addMarker(new MarkerOptions().position(k.getLatLng()).title(k.getName()));
-                    }
                 }else{
                     Log.e(">>>>>>", "Modalidad de adición prro");
-                    String msg="Lat: "+e.latitude+" Long: "+e.longitude;
-                    Log.e(">>>",msg);
-                    Place marker = new Place("", new LatLng(e.latitude, e.longitude));
-                    marker.setName(placeName);
-
+                    LatLng pos = new LatLng(e.latitude, e.longitude);
+                    mMap.addMarker(new MarkerOptions().position(pos));
+                    Place marker = new Place("", pos);
                     observer.continueBtn(marker);
                 }
             });
@@ -134,9 +133,8 @@ public class MapsFragment extends Fragment implements LocationListener, OnMapRea
     public void setModality(int modality){ this.modality = modality; }
 
     @Override
-    public void onNewMod(int i, String name){
+    public void onNewMod(int i){
         setModality(i);
-        setPlaceName(name);
     }
 
     @Override
@@ -194,14 +192,6 @@ public class MapsFragment extends Fragment implements LocationListener, OnMapRea
 
     public void savePlaces(Place place){
         markers.add(place);
-    }
-
-    public String getPlaceName() {
-        return placeName;
-    }
-
-    public void setPlaceName(String placeName) {
-        this.placeName = placeName;
     }
 
     public interface PassingInfo {

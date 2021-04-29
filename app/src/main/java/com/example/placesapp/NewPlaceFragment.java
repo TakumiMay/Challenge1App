@@ -52,8 +52,6 @@ public class NewPlaceFragment extends Fragment {
     //Boton de registrar
     private Button btnReg;
 
-    private Place place;
-
     private TextView txtAddress;
 
     private HomeActivity home;
@@ -87,14 +85,19 @@ public class NewPlaceFragment extends Fragment {
         txtPlaceName = root.findViewById(R.id.txtPlaceName);
 
         btnReg.setOnClickListener( e -> {
-            place.setName(txtPlaceName.toString());
-            home.getPlaces().add(place);
+            home.getPlace().setName(txtPlaceName.toString());
+            home.getPlaces().add(home.getPlace());
+            Log.e(">>>>>>>>>", home.getPlaces().get(0)+"");
+
+            txtPlaceName.setText("");
+            imgPlace.setVisibility(View.INVISIBLE);
+
         });
 
         btnAddPosition.setOnClickListener( e -> {
             Toast.makeText(this.getContext(), "Sostenga el toque para ubicar el lugar\ndel Place", Toast.LENGTH_LONG).show();
             observer.changeToMap(observer.getMapFragment());
-            observer2.onNewMod(1, txtPlaceName.getText().toString());
+            observer2.onNewMod(1);
         });
 
         btnAddImg.setOnClickListener(e -> {
@@ -120,7 +123,7 @@ public class NewPlaceFragment extends Fragment {
             Bitmap image = BitmapFactory.decodeFile(path);
             imgPlace.setVisibility(View.VISIBLE);
             imgPlace.setImageBitmap(image);
-            place.setImage(image);
+            home.getPlace().setImage(image);
         }
     }
 
@@ -150,15 +153,7 @@ public class NewPlaceFragment extends Fragment {
     }
 
     public interface OnNewModality{
-        void onNewMod(int i, String name);
-    }
-
-    public Place getPlace() {
-        return place;
-    }
-
-    public void setPlace(Place place) {
-        this.place.setLatLng(place.getLatLng());
+        void onNewMod(int i);
     }
 
 }

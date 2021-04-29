@@ -11,6 +11,10 @@ public class Place {
     private LatLng latLng;
     private Bitmap image;
 
+    public Place(){
+
+    }
+
     public Place(String name, LatLng latLng){
         this.name=name;
         this.latLng=latLng;
