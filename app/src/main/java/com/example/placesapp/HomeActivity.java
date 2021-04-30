@@ -147,6 +147,10 @@ public class HomeActivity extends AppCompatActivity implements
         return place;
     }
 
+    public void setPlace(Place place) {
+        this.place= place;
+    }
+
     public FindPlaceFragment getFindPlace() {
         return findPlace;
     }
