@@ -85,10 +85,10 @@ public class NewPlaceFragment extends Fragment {
         txtPlaceName = root.findViewById(R.id.txtPlaceName);
 
         btnReg.setOnClickListener( e -> {
-            home.getPlace().setName(txtPlaceName.toString());
+            home.getPlace().setName(txtPlaceName.getText().toString());
             home.getPlaces().add(home.getPlace());
-            Log.e(">>>>>>>>>", "Latitud: "+home.getPlaces().get(0).getLatLng().latitude);
-            Log.e(">>>>>>>>>", "Longitud: "+home.getPlaces().get(0).getLatLng().latitude);
+            Log.e(">>>>>>>>>", "Latitud: "+home.getPlaces().get(0).getName().toString());
+            Log.e(">>>>>>>>>", "Longitud: "+home.getPlaces().get(0).getName().toString());
 
             txtPlaceName.setText("");
             imgPlace.setVisibility(View.INVISIBLE);
